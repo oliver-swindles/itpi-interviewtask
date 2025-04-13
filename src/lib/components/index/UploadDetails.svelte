@@ -1,24 +1,20 @@
 <script>
-  import { Label, Input, Fileupload, Textarea, Button } from 'flowbite-svelte';
+  import { Label, Input, Fileupload, Textarea, Button } from "flowbite-svelte";
   
   let fileuploadprops = {
-    id: 'user_avatar'
-  };
-
-  let fileuploadprops2 = {
-    id: 'user_avatar2'
+    id: "user_avatar"
   };
 
   let textareaprops = {
-    id: 'message',
-    name: 'message',
-    label: 'Your message',
+    id: "message",
+    name: "message",
+    label: "Your message",
     rows: 4,
-    placeholder: 'Leave a comment...'
+    placeholder: "Leave a comment..."
   };
 </script>
 
-<form action="" class="flex flex-col gap-4">
+<form action="" method="POST" class="flex flex-col gap-4">
   <div class="flex">
     <div>
       <Label class="block mb-2">Job Title</Label>
