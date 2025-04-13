@@ -6,20 +6,20 @@ const ai = new GoogleGenAI({ apiKey: env.GEMINI_API_KEY });
 export const actions = {
   default: async ({ request }) => {
     const form = await request.formData();
-    const jobTitle = form.get("job-title");
+    const title = form.get("jobTitle");
     const company = form.get("company");
+    const description = form.get("jobDescription");
 
-    if (!jobTitle || !company) {
-      return { success: false, message: "Missing fields" };
-    }
-
-    const result = await ai.models.generateContent({
+    const response = await ai.models.generateContent({
       model: "gemini-2.0-flash-001",
-      contents: `Give step by step for how to get a ${jobTitle} job at ${company}`,
+      contents: `Give a short, step by step plan for how to get a ${title} job at ${company}, you must use the job description that they provide to list skills you must learn, here is the description: ${description}`,
     });
 
-    const output = result.text;
+    console.log(response.text);
 
-    return { success: true, message: output };
+    return {
+      success: true,
+      response: response.text,
+    };
   },
 };

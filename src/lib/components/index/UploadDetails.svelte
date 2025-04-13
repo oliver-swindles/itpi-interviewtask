@@ -1,4 +1,5 @@
 <script>
+  import { responseText, loading } from "$lib/stores/response";
   import { Label, Input, Fileupload, Textarea, Button } from "flowbite-svelte";
   
   let fileuploadprops = {
@@ -6,19 +7,35 @@
   };
 
   let textareaprops = {
-    id: "message",
-    name: "message",
+    id: "jobDescription",
+    name: "jobDescription",
     label: "Your message",
     rows: 4,
     placeholder: "Leave a comment..."
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    loading.set(true);
+    responseText.set("");
+
+    const formData = new FormData(e.target);
+    const res = await fetch("/?/_action=default", {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await res.json();
+    responseText.set(data.response);
+    loading.set(false);
+  };
 </script>
 
-<form action="" method="POST" class="flex flex-col gap-4">
+<form on:submit={handleSubmit} class="flex flex-col gap-4">
   <div class="flex">
     <div>
       <Label class="block mb-2">Job Title</Label>
-      <Input label="Job Title" id="job-title" name="job-title" required placeholder="e.g. Software Engineer" minlength="1" maxlength="20" />
+      <Input label="Job Title" id="jobTitle" name="jobTitle" required placeholder="e.g. Software Engineer" minlength="1" maxlength="30" />
     </div>
     <div>
       <Label class="block mb-2">Company</Label>
