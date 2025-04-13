@@ -1,11 +1,16 @@
 <script lang="ts">
   export let data: { response: string | null };
+  import { marked } from "marked";
+  $: htmlResponse = data.response ? marked.parse(data.response) : '';
+  import { Spinner } from "flowbite-svelte";
 </script>
 
 <div class="response">
   {#if data.response}
-    <div class="response-text">{data.response}</div>
+    <article class="max-w-70ch">
+      {@html htmlResponse}
+    </article>
   {:else}
-    <p>Loading response...</p>
+    <Spinner />
   {/if}
 </div>

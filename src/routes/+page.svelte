@@ -3,7 +3,8 @@
   import Response from "$lib/components/index/Response.svelte";
   import { enhance } from "$app/forms";
   import type { ActionResult } from '@sveltejs/kit';
-  import { Button } from "flowbite-svelte"; // Import Button here
+  import { Button, Spinner } from "flowbite-svelte"; // Import Button here
+  import InterviewImage from "$lib/assets/images/interview.svg";
 
   let actionResponse: string | null = null;
   let submitting = false;
@@ -28,11 +29,12 @@
 
 </script>
 
-<div class="grid grid-cols-5 m-4 gap-4">
-  <section class="col-span-2 p-4">
+<div class="h-18"></div>
+<div class="grid grid-cols-5 gap-4 h-[calc(100svh-4.5rem)]">
+  <section class="col-span-2 p-8 flex flex-col m-6 rounded-xl shadow-2xl">
     <form method="POST" use:enhance={handleSubmit} class="flex flex-col gap-6" enctype="multipart/form-data">
       <UploadDetails />
-      <Button type="submit" disabled={submitting}>
+      <Button type="submit" class="cursor-pointer" disabled={submitting}>
         {#if submitting}
           Submitting...
         {:else}
@@ -42,13 +44,19 @@
     </form>
   </section>
 
-  <section class="col-span-3 border-l-2 p-4">
+  <section class="col-span-3 p-8">
     {#if submitting}
-      <p>Generating tips...</p>
+      <div class="h-full flex flex-col gap-8 items-center justify-center">
+        <Spinner class="" size={16} />
+        <p>Pressing buttons on big machine... hold tight!</p>
+      </div>
     {:else if actionResponse}
       <Response data={{ response: actionResponse }} />
     {:else}
-      <p>Submit the form on the left to get application tips.</p>
+      <div class="h-full flex flex-col items-center justify-center gap-8">
+        <img src={InterviewImage} alt="Interview" class="w-36">
+        <p>Submit the form on the left to get application tips 😄</p>
+      </div>
     {/if}
   </section>
 </div>
