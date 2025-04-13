@@ -29,7 +29,7 @@ export const actions = {
     }
 
     const prompt = `
-    You're an AI assistant helping Lancaster University students get hired.
+    You're an AI assistant helping Lancaster University students get hired for the job of ${title} at ${company}.
     
     Given the job description and the candidate's CV, return a concise, practical response in **three sections**:
     

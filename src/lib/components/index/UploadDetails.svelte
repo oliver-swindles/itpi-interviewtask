@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Label, Input, Textarea, FloatingLabelInput, Helper, Dropzone } from "flowbite-svelte"; // Removed Button import
+  import { Label, Input, Textarea, Dropzone } from "flowbite-svelte";
 
   let fileuploadprops = {
     id: "cvFile"

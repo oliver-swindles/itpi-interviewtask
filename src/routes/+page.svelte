@@ -2,8 +2,8 @@
   import UploadDetails from "$lib/components/index/UploadDetails.svelte";
   import Response from "$lib/components/index/Response.svelte";
   import { enhance } from "$app/forms";
-  import type { ActionResult } from '@sveltejs/kit';
-  import { Button, Spinner } from "flowbite-svelte"; // Import Button here
+  import type { ActionResult } from "@sveltejs/kit";
+  import { Button, Spinner } from "flowbite-svelte";
   import InterviewImage from "$lib/assets/images/interview.svg";
 
   let actionResponse: string | null = null;
