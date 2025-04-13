@@ -1,2 +1,12 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script lang="ts">
+  import UploadDetails from "$lib/components/index/UploadDetails.svelte";
+</script>
+
+<div class="grid grid-cols-5 m-4">
+  <section class="col-span-2 p-4">
+    <UploadDetails />
+  </section>
+  <section class="col-span-3 border-l-2 p-4">
+    <p>test</p>
+  </section>
+</div>
