@@ -30,7 +30,7 @@
 </script>
 
 <div class="h-18"></div>
-<div class="grid grid-cols-5 gap-4 h-[calc(100svh-4.5rem)]">
+<div class="grid grid-cols-1 lg:grid-cols-5 gap-4 h-[calc(100svh-4.5rem)]">
   <section class="col-span-2 p-8 flex flex-col m-6 rounded-xl shadow-2xl">
     <form method="POST" use:enhance={handleSubmit} class="flex flex-col gap-6" enctype="multipart/form-data">
       <UploadDetails />
